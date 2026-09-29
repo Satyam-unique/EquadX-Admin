@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Team SquadX Admin</title>
+
+  <!-- MapLibre -->
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- QR Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ================= Sidebar ================= -->
+  <div class="sidebar">
+    <h2>🌱 Team SquadX</h2>
+    <ul>
+      <li onclick="showSection('overview')">Dashboard</li>
+      <li onclick="showSection('scans')">Live Scans</li>
+      <li onclick="showSection('map')">Bin Map</li>
+      <li onclick="showSection('analytics')">Analytics</li>
+      <li onclick="showSection('fraud')">Suspicious Activity</li>
+      <li onclick="showSection('manageBins')">Manage Bins</li>
+      <li onclick="showSection('users')">Users</li>
+    </ul>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- ================= Main Content ================= -->
+  <div class="main">
+
+    <!-- 1️⃣ Dashboard -->
+    <div id="overview" class="section">
+      <h2>Dashboard Overview</h2>
+      <div class="cards">
+        <div class="card">Users: <span id="userCount">0</span></div>
+        <div class="card">Bins: <span id="binCount">0</span></div>
+        <div class="card">Total Scans: <span id="scanCount">0</span></div>
+      </div>
+    </div>
+
+    <!-- 2️⃣ Live Scan Monitor -->
+    <div id="scans" class="section hidden">
+      <h2>Live Scan Monitor</h2>
+      <ul id="scanList"></ul>
+    </div>
+
+    <!-- 3️⃣ QR Generator -->
+    <div id="manageBins" class="section hidden">
+  <h2>Manage Bins</h2>
+
+  <!-- 🔥 Compact QR Creator -->
+  <div class="bin-create-box">
+    <input id="qrInput" placeholder="BIN_ID">
+    <input id="latInput" placeholder="Latitude">
+    <input id="lngInput" placeholder="Longitude">
+    <input id="pointsInput" placeholder="Points (default 10)">
+    <button onclick="generateQR()">Create Bin</button>
+  </div>
+
+  <br>
+
+  <table class="bins-table">
+    <thead>
+      <tr>
+        <th>Bin ID</th>
+        <th>Points</th>
+        <th>Status</th>
+        <th>QR</th>
+        <th>Save</th>
+      </tr>
+    </thead>
+    <tbody id="binsTable"></tbody>
+  </table>
+</div>
+
+    <!-- 4️⃣ Map -->
+    <div id="map" class="section hidden">
+      <h2>Live Bin Map</h2>
+      <div id="mapContainer"></div>
+    </div>
+
+    <!-- 5️⃣ Analytics -->
+    <div id="analytics" class="section hidden">
+      <h2>Scan Analytics</h2>
+      <canvas id="chartCanvas"></canvas>
+    </div>
+
+    <!-- 6️⃣ Suspicious Activity -->
+    <div id="fraud" class="section hidden">
+      <h2>Suspicious Activity</h2>
+      <ul id="fraudList"></ul>
+    </div>
+
+    <!-- 7️⃣ Users (NOW INSIDE MAIN ✅) -->
+    <div id="users" class="section hidden">
+      <h2>Users</h2>
+      <input 
+      type="text" 
+      id="userSearch" 
+      placeholder="Search by name or email..."
+      style="margin-bottom:15px; padding:8px; width:300px;">
+
+      <table class="bins-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Points</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody id="usersTable"></tbody>
+      </table>
+    </div>
+
+  </div> <!-- END main -->
+
+</div> <!-- END container -->
+
+
+<!-- ================= QR Modal ================= -->
+<div id="qrModal" class="qr-modal hidden">
+  <div class="qr-content">
+    <h3>Bin QR Code</h3>
+    <canvas id="modalQR"></canvas>
+    <br><br>
+    <button onclick="downloadQR()">Download</button>
+    <button onclick="closeQR()">Close</button>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

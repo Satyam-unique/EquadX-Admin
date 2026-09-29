@@ -1,0 +1,241 @@
+/* ==============================
+   Global Layout
+============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ==============================
+   Sidebar
+============================== */
+
+.sidebar {
+  width: 220px;
+  background: #111827;
+  color: white;
+  padding: 20px;
+  flex-shrink: 0; /* prevents sidebar shrinking */
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background 0.2s ease;
+}
+
+.sidebar li:hover {
+  background: #1f2937;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  background: #dc2626;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: auto;
+}
+
+/* ==============================
+   Main Content
+============================== */
+
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-x: auto; /* prevents layout break */
+}
+
+.section {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==============================
+   Dashboard Cards
+============================== */
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ==============================
+   Map
+============================== */
+
+#mapContainer {
+  height: 500px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ==============================
+   Tables (Manage Bins & Users)
+============================== */
+
+.bins-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  table-layout: fixed;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bins-table th,
+.bins-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  word-break: break-word;
+}
+
+.bins-table th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.bins-table tr:hover {
+  background: #f3f4f6;
+}
+
+/* ==============================
+   Status & Buttons
+============================== */
+
+.status-active {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.save-btn {
+  padding: 6px 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* ==============================
+   QR Modal Styles
+============================== */
+
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.qr-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 280px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Admin row highlight */
+
+.admin-row {
+  background-color: #eef2ff;
+}
+
+.admin-badge {
+  background: #2563eb;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+/* Bin Creator Box */
+.bin-create-box {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.bin-create-box input {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.bin-create-box button {
+  padding: 6px 12px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
